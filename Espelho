@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Abrir Câmera Frontal</h2>
+<button onclick="openCamera()">Abrir Câmera Frontal</button>
+
+<script>
+function openCamera() {
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+    .then(function(stream) {
+      var video = document.createElement('video');
+      video.srcObject = stream;
+      video.play();
+      document.body.appendChild(video);
+    })
+    .catch(function(err) {
+      console.log("Erro ao acessar câmera: " + err);
+    });
+}
+</script>
+
+</body>
+</html>
